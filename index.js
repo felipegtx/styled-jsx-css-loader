@@ -11,7 +11,10 @@ module.exports = function(content) {
   if (escapedContent.startsWith("/* @styled-jsx=global */")) {
     scope = ".global";
   }
-  
+  else if (escapedContent.startsWith("/* @styled-jsx=resolve */")) {
+    scope = ".resolve";
+  }
+
   return "import css from 'styled-jsx/css';\n\nexport default css" + scope + "`" + escapedContent + "`;";
 
 };
